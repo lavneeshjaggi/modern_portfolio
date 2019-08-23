@@ -1,0 +1,30 @@
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-home-image: true;
+$home-image: url(../Images/background.jpg);
+$background-opacity: 0.9;
+
+@mixin easeOut {
+    transition: all 0.5s ease-out;    
+}
+
+@mixin background {
+    @if $show-home-image {
+        &#bg-img {
+            background-attachment: fixed;
+            background-image: $home-image;
+            background-size: cover;
+
+            &::after {
+                content:'';
+                background: rgba($primary-color, $background-opacity);
+                position: fixed;
+                height: 100%;
+                right: 0;
+                top: 0;
+                width: 100%;
+                z-index: -1;
+            }
+        }
+    }
+}
